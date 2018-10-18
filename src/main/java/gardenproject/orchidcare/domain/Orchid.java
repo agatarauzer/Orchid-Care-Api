@@ -1,15 +1,19 @@
 package gardenproject.orchidcare.domain;
 
 
+import gardenproject.orchidcare.validator.Enum;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "ORCHIDS")
 public class Orchid {
@@ -20,21 +24,28 @@ public class Orchid {
     @Column(name = "ORCHID_ID" , unique = true)
     private Long id;
 
-    @Column(name = "NAME_FROM_USER")
+    @Column(name = "NAME_FROM_USER", unique = true)
     @NotNull
     private String name;
 
-    @Column(name = "BASE_GROUP")
-    private String group;
+    @Column(name = "COLOR")
+    private String color;
 
+    @Enum(enumClass = BaseGroup.class, ignoreCase = true)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "BASE_GROUP")
+    private BaseGroup group;
+
+    @Enum(enumClass = Kind.class, ignoreCase = true)
+    @Enumerated(EnumType.STRING)
     @Column(name = "KIND")
-    private String kind;
+    private Kind kind;
 
     @Column(name = "CULTIVAR")
     private String cultivar;
 
     @Column(name = "BUY_DATE")
-    private String buyDate;
+    private LocalDate buyDate;
 
     @OneToMany(cascade = CascadeType.ALL, targetEntity = Watering.class, mappedBy = "orchid")
     private List<Watering> plantWatering;

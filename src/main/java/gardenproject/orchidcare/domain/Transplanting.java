@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "ORCHID_TRANSPLANTING")
@@ -20,7 +22,7 @@ public class Transplanting {
 
     @Column(name = "DATE")
     @NotNull
-    private String date;
+    private LocalDate date;
 
     @Column(name = "USER_NOTES")
     private String userNotes;

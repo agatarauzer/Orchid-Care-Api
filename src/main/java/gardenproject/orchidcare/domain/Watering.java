@@ -2,9 +2,10 @@ package gardenproject.orchidcare.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "ORCHID_WATERING")
@@ -20,7 +21,7 @@ public class Watering {
 
     @Column(name ="DATE")
     @NotNull
-    private String date;
+    private LocalDate date;
 
     @Column(name = "FERTILIZER")
     private boolean withFertilizer;
