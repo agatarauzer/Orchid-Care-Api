@@ -1,5 +1,6 @@
 package gardenproject.orchidcare.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "ORCHID_WATERING")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Watering {
 
@@ -32,4 +34,10 @@ public class Watering {
     @ManyToOne
     @JoinColumn(name = "ORCHID_ID", nullable = false)
     private Orchid orchid;
+
+    public Watering(@NotNull LocalDate date, boolean withFertilizer, String userNotes) {
+        this.date = date;
+        this.withFertilizer = withFertilizer;
+        this.userNotes = userNotes;
+    }
 }

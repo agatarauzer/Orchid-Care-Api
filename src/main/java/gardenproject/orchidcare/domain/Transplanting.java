@@ -1,5 +1,6 @@
 package gardenproject.orchidcare.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "ORCHID_TRANSPLANTING")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Transplanting {
 
@@ -30,4 +32,9 @@ public class Transplanting {
     @ManyToOne
     @JoinColumn(name = "ORCHID_ID", nullable = false)
     private Orchid orchid;
+
+    public Transplanting(@NotNull LocalDate date, String userNotes) {
+        this.date = date;
+        this.userNotes = userNotes;
+    }
 }

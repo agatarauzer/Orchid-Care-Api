@@ -8,6 +8,7 @@ import gardenproject.orchidcare.service.OrchidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,14 +34,14 @@ public class OrchidController {
     }
 
     @PostMapping(value = "orchid")
-    public OrchidDto addOrchid(@RequestBody OrchidDto orchidDto) {
+    public OrchidDto addOrchid(@Valid @RequestBody OrchidDto orchidDto) {
         Orchid orchid = orchidMapper.mapToOrchid(orchidDto);
         Orchid addedOrchid = orchidService.saveOrchid(orchid);
         return orchidMapper.mapToOrchidDto(addedOrchid);
     }
 
     @PutMapping(value = "orchid")
-    public OrchidDto updateOrchid(@RequestBody OrchidDto orchidDto) {
+    public OrchidDto updateOrchid(@Valid @RequestBody OrchidDto orchidDto) {
         Orchid orchid = orchidMapper.mapToOrchid(orchidDto);
         Orchid addedOrchid = orchidService.saveOrchid(orchid);
         return orchidMapper.mapToOrchidDto(addedOrchid);
