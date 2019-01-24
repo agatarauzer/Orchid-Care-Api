@@ -29,7 +29,7 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(OrchidNotFoundException.class)
-    public final ResponseEntity<ErrorDetails> handleMovieNotFoundInImdbException(Exception e, WebRequest request) {
+    public final ResponseEntity<ErrorDetails> handleOrchidNotFoundException(Exception e, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }

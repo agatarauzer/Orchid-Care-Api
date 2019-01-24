@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface WateringRepository extends CrudRepository<Watering, Long> {
 
-
-    List<Watering> findAllAndOrderByDate();
+    @Override
+    List<Watering> findAll();
 }

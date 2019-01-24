@@ -15,6 +15,6 @@ public class WateringService {
 
 
     public List<Watering> getFullWateringList() {
-        return wateringRepository.findAllAndOrderByDate();
+        return wateringRepository.findAll();
     }
 }

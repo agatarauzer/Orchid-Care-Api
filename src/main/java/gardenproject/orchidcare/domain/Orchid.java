@@ -31,12 +31,10 @@ public class Orchid {
     @Column(name = "COLOR")
     private String color;
 
-    @Enum(enumClass = BaseGroup.class, ignoreCase = true)
     @Enumerated(EnumType.STRING)
     @Column(name = "BASE_GROUP")
     private BaseGroup group;
 
-    @Enum(enumClass = Kind.class, ignoreCase = true)
     @Enumerated(EnumType.STRING)
     @Column(name = "KIND")
     private Kind kind;
